@@ -1,0 +1,276 @@
+body {
+  height: 100%;
+  width: 100%;
+  background: #141414;
+  overflow: hidden;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.glass {
+  height: 350px;
+  width: 200px;
+  background: #122139;
+  border-radius: 300px 300px 0px 0px;
+  position: relative;
+}
+
+.glass:before {
+  content: "";
+  height: 10px;
+  width: 10px;
+  transform-origin: center;
+  border: 10px solid #122139;
+  border-radius: 100%;
+  position: absolute;
+  left: 87px;
+  top: -25px;
+}
+
+.glass:after {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 250px;
+  background: #DC143C;
+  top: 100%;
+  left: -13%;
+}
+
+.shine {
+  width: 12px;
+  height: 140px;
+  background: white;
+  opacity: 0.2;
+  position: absolute;
+  left: 85%;
+  top: 80px;
+  border-radius: 100px;
+  z-index: 10;
+}
+
+.shine:before {
+  content: "";
+  width: 12px;
+  height: 20px;
+  position: absolute;
+  background: white;
+  top: 160px;
+  border-radius: 100px;
+}
+
+/* PETALS */
+.petals > div {
+  position: absolute;
+  width: 45px;
+  height: 80px;
+  top: 55px;
+  transition: all 0.5s ease-out;
+}
+
+.petals > div:nth-child(1) {
+  border-radius: 15px;
+  box-shadow: 0px 0px 30px rgba(245,148,184,1);
+  left: 80px;
+  top: 60px;
+  background: #FF1493;
+}
+
+/* pétalos pares */
+.petals > div:nth-child(2),
+.petals > div:nth-child(4),
+.petals > div:nth-child(6) {
+  background: #b81b43;
+  left: 60px;
+  border-radius: 0px 30px 0px 30px;
+  transform-origin: bottom right;
+}
+
+/* pétalos impares */
+.petals > div:nth-child(3),
+.petals > div:nth-child(5),
+.petals > div:nth-child(7) {
+  background: #b81b43;
+  left: 100px;
+  border-radius: 30px 0px 30px 0px;
+  transform-origin: bottom left;
+}
+
+/* individuales */
+.petals > div:nth-child(2) {
+  z-index: 5;
+  background: #a61c40;
+  top: 75px;
+  height: 70px;
+  box-shadow: 0px 0px 50px rgba(245,148,184,.5);
+  animation: bloom2 3s ease-in-out forwards;
+}
+
+.petals > div:nth-child(3) {
+  z-index: 4;
+  background: #a61c40;
+  top: 75px;
+  height: 70px;
+  box-shadow: 0px 0px 50px rgba(245,148,184,.5);
+  animation: bloom3 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+}
+
+.petals > div:nth-child(4) {
+  z-index: 3;
+  background: #b81b43;
+  top: 70px;
+  height: 75px;
+  box-shadow: 0px 0px 50px rgba(245,148,184,.5);
+  animation: bloom4 3s ease-in-out forwards, glowing 2.5s infinite;
+}
+
+.petals > div:nth-child(5) {
+  z-index: 2;
+  background: #b81b43;
+  top: 70px;
+  height: 75px;
+  box-shadow: 0px 0px 50px rgba(245,148,184,.5);
+  animation: bloom5 3s ease-in-out forwards, glowing 2.5s infinite;
+}
+
+.petals > div:nth-child(6) {
+  z-index: 1;
+  background: #c9204b;
+  top: 65px;
+  height: 70px;
+  box-shadow: 0px 0px 50px rgba(245,148,184,.3);
+  animation: bloom6 3s ease-in-out forwards, glowing 2.5s infinite;
+}
+
+.petals > div:nth-child(7) {
+  z-index: 0;
+  background: #c9204b;
+  top: 65px;
+  height: 70px;
+  box-shadow: 0px 0px 50px rgba(245,148,184,.3);
+  animation: bloom7 3s ease-in-out forwards, glowing 2.5s infinite;
+}
+
+/* DEAD PETALS */
+.deadPetals > div {
+  position: absolute;
+  background: #FF1493;
+  width: 20px;
+  height: 15px;
+  top: 120px;
+  border-radius: 0px 30px 0px 30px;
+  box-shadow: 0px 0px 30px rgba(245,148,184,.5);
+}
+
+.deadPetals > div:nth-child(1) { left: 70px; animation: falling 20s 4s infinite; }
+.deadPetals > div:nth-child(2) { left: 90px; animation: falling 20s 8s infinite; }
+.deadPetals > div:nth-child(3) { left: 110px; animation: falling 20s 12s infinite; }
+.deadPetals > div:nth-child(4) { left: 80px; animation: falling 20s 16s infinite; }
+
+/* LEAVES */
+.leaves > div:nth-child(1) {
+  position: absolute;
+  width: 6px;
+  height: 210px;
+  background: #005f00;
+  top: 95px;
+  left: 100px;
+  border-radius: 0 0 100px 100px;
+}
+
+.leaves > div:nth-child(2) {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  border-radius: 5px 40px 20px 40px;
+  background: #005f00;
+  transform: rotate(-30deg);
+  top: 180px;
+  left: 80px;
+}
+
+.leaves > div:nth-child(3) {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  border-radius: 40px 5px 40px 20px;
+  background: #005f00;
+  transform: rotate(30deg);
+  top: 150px;
+  left: 95px;
+}
+
+.leaves > div:last-child {
+  position: absolute;
+  width: 55px;
+  height: 30px;
+  background: #7CFC00;
+  top: 120px;
+  left: 75px;
+  border-radius: 100px;
+}
+
+/* THORNS */
+.thorns > div {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.thorns > div:nth-child(odd) {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #005f00;
+  left: 105px;
+}
+
+.thorns > div:nth-child(even) {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #005f00;
+  left: 95px;
+}
+
+/* ANIMATIONS */
+@keyframes bloom2 {
+  50% {
+    transform: rotate(-90deg);
+    top: 200px;
+    left: 100px;
+  }
+  100% {
+    transform: rotate(-60deg);
+    top: 252px;
+    left: 50px;
+    background: #7a0f2c;
+  }
+}
+
+@keyframes bloom3 { 100% { transform: rotate(45deg);} }
+@keyframes bloom4 { 100% { transform: rotate(-20deg);} }
+@keyframes bloom5 { 100% { transform: rotate(20deg);} }
+@keyframes bloom6 { 100% { transform: rotate(-5deg);} }
+@keyframes bloom7 { 100% { transform: rotate(5deg);} }
+
+@keyframes glowing {
+  50% {
+    background: #ff1aa0;
+    box-shadow: 0px 0px 60px rgba(245,148,184,1);
+  }
+}
+
+@keyframes falling {
+  20% {
+    top: 335px;
+    background: #a3153d;
+  }
+  100% {
+    top: 335px;
+    opacity: 0;
+  }
+}

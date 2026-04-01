@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💗 Para Camila 💗</title>
+
+```
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="rosa20.css">
+<link rel="stylesheet" href="rosa1.css">
+
+<style>
+    .rose-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        margin-bottom: -120px;
+        position: relative;
+        z-index: 5;
+    }
+
+    .love-message-content {
+        margin-top: 120px;
+    }
+    .container {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+}
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="fall-container">
+<div class="falling">
+
+```
+<!-- FLORES CAYENDO -->
+<div class="item flower"><div class="item-inner"></div></div>
+<div class="item flower"><div class="item-inner"></div></div>
+<div class="item flower"><div class="item-inner"></div></div>
+<div class="item flower"><div class="item-inner"></div></div>
+
+<!-- PANTALLA INICIO -->
+<div class="start-screen" id="startScreen">
+    <h1 class="start-title">Un regalo para ti 💘</h1>
+    <button class="start-button" id="startBtn">Abrir</button>
+</div>
+
+<!-- EFECTOS -->
+<div class="flotantes-container" id="flotantesContainer"></div>
+
+<!-- LUCES -->
+<div class="light light-1"></div><div class="light light-2"></div><div class="light light-3"></div>
+<div class="light light-4"></div><div class="light light-5"></div><div class="light light-6"></div>
+<div class="light light-7"></div><div class="light light-8"></div><div class="light light-9"></div>
+<div class="light light-10"></div>
+
+<!-- CONTENIDO -->
+<div class="main-content animation-paused" id="mainContainer">
+
+    <h1 class="main-title">Feliz Día ❤️</h1>
+
+    <!-- 🌹 ROSA -->
+    <div class="rose-container">
+        <div class="container">
+            <div class="glass">
+                <div class="shine"></div>
+            </div>
+
+            <div class="thorns">
+                <div></div><div></div><div></div><div></div>
+            </div>
+
+            <div class="leaves">
+                <div></div><div></div><div></div><div></div>
+            </div>
+
+            <div class="petals">
+                <div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div>
+            </div>
+
+            <div class="deadPetals">
+                <div></div><div></div><div></div><div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MENSAJE -->
+    <section class="love-message-section">
+        <div class="love-message-content">
+            <h2>Camila 😍</h2>
+
+            <p>
+                Dicen que las rosas representan sentimientos que a veces no sabemos cómo decir.
+                Yo no tengo un jardín para darte, pero sí estas palabras, que van con mucho cariño.
+            </p>
+
+            <p>
+                Cada momento que hablo contigo se siente especial, de esos que no pasan desapercibidos.
+                Me alegra mucho haberte conocido, de verdad.
+            </p>
+
+            <p>
+                No quiero que nuestros caminos se separen, porque cada instante contigo significa mucho para mí. 
+                Pero si alguna vez eso llegara a pasar, me gustaría creer que el destino nos volverá a cruzar.
+                 Y aunque quizá no sientas lo mismo que yo, quiero que sepas que siempre tendrás un lugar bonito en mi corazón.
+            </p>
+
+            <!-- TU IMAGEN -->
+            <img src="https://www.dl.dropboxusercontent.com/scl/fi/01pulh8w6pmr1thbcctxb/flower.png?rlkey=jx0ufhpnrw07hsynrfbitkr6q&st=bzxns3c1" class="footer-image">
+        </div>
+    </section>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="backgroundMusic" loop>
+    <source src="2rosas.mp3" type="audio/mpeg">
+</audio>
+
+<!-- BOTÓN MÚSICA -->
+<button id="musicButton">
+    <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+    <svg id="pauseIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+</button>
+```
+
+</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const startBtn = document.getElementById('startBtn');
+    const mainContainer = document.getElementById('mainContainer');
+    const music = document.getElementById('backgroundMusic');
+    const musicButton = document.getElementById('musicButton');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+
+    startBtn.addEventListener('click', () => {
+        document.getElementById('startScreen').classList.add('hidden');
+        mainContainer.classList.remove('animation-paused');
+        document.body.style.overflowY = 'auto';
+        toggleMusic(true);
+        iniciarPetalos();
+    });
+
+    musicButton.addEventListener('click', () => toggleMusic());
+
+    function toggleMusic(forcePlay = false) {
+        if (forcePlay || music.paused) {
+            music.play().catch(e => console.log(e));
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        } else {
+            music.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    }
+
+    function crearPetalo() {
+        const contenedor = document.getElementById('flotantesContainer');
+        const petalo = document.createElement('div');
+        petalo.classList.add('petalo');
+        petalo.innerHTML = '❁';
+
+        petalo.style.left = `${Math.random() * 100}vw`;
+        petalo.style.fontSize = `${Math.random() * 1.2 + 1}rem`;
+        petalo.style.animationDuration = `${Math.random() * 5 + 8}s`;
+        petalo.style.animationDelay = `${Math.random() * 5}s`;
+
+        contenedor.appendChild(petalo);
+    }
+
+    function iniciarPetalos() {
+        for (let i = 0; i < 28; i++) {
+            crearPetalo();
+        }
+    }
+});
+</script>
+
+</body>
+</html>
